@@ -1,1 +1,1 @@
-# api-directory
+# api-directory ngrok config add-authtoken 2vOSHUVWBsduCPJ4FUdslnnC6M0_3TfV4uapxbfnZFZAaBkx3
