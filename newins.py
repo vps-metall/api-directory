@@ -27,9 +27,19 @@ def normalize_embedding(embedding):
 
 def extract_embedding(image):
     faces = model.get(image)
-    if faces:
-        return normalize_embedding(faces[0].embedding)
-    return None
+    if not faces:
+        return None
+
+    # Выбираем лицо с наибольшей площадью (самое большое на кадре)
+    largest_face = max(faces, key=lambda f: (f.bbox[2] - f.bbox[0]) * (f.bbox[3] - f.bbox[1]))
+    return normalize_embedding(largest_face.embedding)
+
+
+# def extract_embedding(image):
+#     faces = model.get(image)
+#     if faces:
+#         return normalize_embedding(faces[0].embedding)
+#     return None
 
 def load_known_faces():
     known_face_encodings = []
